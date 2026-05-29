@@ -65,7 +65,7 @@ const pillars = [
 
 function Index() {
   return (
-    <div id="top" className="min-h-screen bg-background text-foreground font-display">
+    <div id="top" className="min-h-screen bg-background text-foreground font-display pb-20">
       <Nav />
 
       {/* HERO */}
