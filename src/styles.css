@@ -29,25 +29,25 @@
 }
 
 :root {
-  --background: #f4f2ef;        /* Warm NZ limestone */
-  --foreground: #1a1a1a;        /* Soft charcoal */
-  --card: #efece7;
-  --card-foreground: #1a1a1a;
-  --accent: #8c7662;            /* Raw timber */
-  --muted: #1a1a1a80;
-  --muted-foreground: #1a1a1a99;
-  --border: #1a1a1a15;
+  --background: #0e0d0c;        /* Near-black charcoal */
+  --foreground: #ece8e1;        /* Warm bone */
+  --card: #161513;
+  --card-foreground: #ece8e1;
+  --accent: #b89878;            /* Warm raw timber / brass */
+  --muted: #ece8e166;
+  --muted-foreground: #ece8e199;
+  --border: #ece8e114;
 }
 
 .dark {
-  --background: #1a1a1a;
-  --foreground: #f4f2ef;
-  --card: #232323;
-  --card-foreground: #f4f2ef;
-  --accent: #c2a98a;
-  --muted: #f4f2ef80;
-  --muted-foreground: #f4f2efaa;
-  --border: #f4f2ef15;
+  --background: #0e0d0c;
+  --foreground: #ece8e1;
+  --card: #161513;
+  --card-foreground: #ece8e1;
+  --accent: #b89878;
+  --muted: #ece8e166;
+  --muted-foreground: #ece8e199;
+  --border: #ece8e114;
 }
 
 @keyframes reveal-up {
