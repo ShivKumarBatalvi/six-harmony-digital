@@ -6,6 +6,7 @@ import projectParnell from "@/assets/project-parnell.jpg";
 import { Nav } from "@/components/site/Nav";
 import { Reveal } from "@/components/site/Reveal";
 import { Counter } from "@/components/site/Counter";
+import { StickyCta } from "@/components/site/StickyCta";
 
 export const Route = createFileRoute("/")({
   head: () => ({
