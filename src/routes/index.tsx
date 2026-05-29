@@ -235,7 +235,7 @@ function Index() {
                     width={1200}
                     height={1500}
                     loading="lazy"
-                    className="aspect-[4/5] w-full object-cover grayscale hover:grayscale-0 hover:scale-[1.03] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
+                    className="aspect-[4/5] w-full object-cover hover:scale-[1.03] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
                   />
                 </div>
                 <figcaption className="mt-6">
@@ -256,7 +256,7 @@ function Index() {
                     width={1000}
                     height={1300}
                     loading="lazy"
-                    className="aspect-[3/4] w-full object-cover grayscale hover:grayscale-0 hover:scale-[1.03] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
+                    className="aspect-[3/4] w-full object-cover hover:scale-[1.03] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
                   />
                 </div>
                 <figcaption className="mt-6">
@@ -277,7 +277,7 @@ function Index() {
                     width={1000}
                     height={1300}
                     loading="lazy"
-                    className="aspect-[5/4] w-full object-cover grayscale hover:grayscale-0 hover:scale-[1.03] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
+                    className="aspect-[5/4] w-full object-cover hover:scale-[1.03] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
                   />
                 </div>
                 <figcaption className="mt-6">
