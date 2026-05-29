@@ -6,6 +6,7 @@ import projectParnell from "@/assets/project-parnell.jpg";
 import { Nav } from "@/components/site/Nav";
 import { Reveal } from "@/components/site/Reveal";
 import { Counter } from "@/components/site/Counter";
+import { StickyCta } from "@/components/site/StickyCta";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -64,8 +65,9 @@ const pillars = [
 
 function Index() {
   return (
-    <div id="top" className="min-h-screen bg-background text-foreground font-display">
+    <div id="top" className="min-h-screen bg-background text-foreground font-display pb-20">
       <Nav />
+      <StickyCta />
 
       {/* HERO */}
       <header className="relative h-screen min-h-[640px] flex flex-col justify-end px-6 md:px-10 pb-16 md:pb-20 overflow-hidden">
