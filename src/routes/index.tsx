@@ -67,6 +67,7 @@ function Index() {
   return (
     <div id="top" className="min-h-screen bg-background text-foreground font-display pb-20">
       <Nav />
+      <StickyCta />
 
       {/* HERO */}
       <header className="relative h-screen min-h-[640px] flex flex-col justify-end px-6 md:px-10 pb-16 md:pb-20 overflow-hidden">
