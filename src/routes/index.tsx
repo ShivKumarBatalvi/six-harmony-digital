@@ -12,13 +12,13 @@ import { HeroCarousel } from "@/components/site/HeroCarousel";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Six Harmony — Renovations, Facilities & Project Management, Auckland NZ" },
+      { title: "Six Harmony — Renovations, Facilities & Project Management, New Zealand" },
       {
         name: "description",
         content:
-          "Six Harmony is an Auckland-based studio for renovations, facilities management, project management and comprehensive trade services across Aotearoa.",
+          "Six Harmony is a New Zealand studio for renovations, facilities management, project management and comprehensive trade services across Aotearoa.",
       },
-      { property: "og:title", content: "Six Harmony — Auckland Builders & Project Management" },
+      { property: "og:title", content: "Six Harmony — NZ Builders & Project Management" },
       {
         property: "og:description",
         content:
@@ -41,7 +41,7 @@ const services = [
   {
     n: "02",
     title: "Facilities Management",
-    body: "Proactive maintenance programmes, scheduled inspections and rapid-response trades keeping Auckland properties operating at their best.",
+    body: "Proactive maintenance programmes, scheduled inspections and rapid-response trades keeping properties operating at their best across the North and South Islands.",
   },
   {
     n: "03",
@@ -86,7 +86,7 @@ function Index() {
         <div className="relative z-10 max-w-6xl w-full mx-auto">
           <h1 className="text-[clamp(2.75rem,10vw,8rem)] font-medium leading-[0.85] tracking-tighter text-balance animate-reveal [animation-delay:300ms]">
             Refining the<br />
-            <span className="font-serif italic text-accent pr-4">Auckland</span> Landscape
+            <span className="font-serif italic text-accent pr-4">Aotearoa</span> Landscape
           </h1>
           <div className="mt-10 md:mt-12 flex flex-col md:flex-row md:justify-between md:items-end gap-8 animate-reveal [animation-delay:600ms]">
             <p className="max-w-[40ch] text-base md:text-lg leading-snug text-pretty">
@@ -95,7 +95,7 @@ function Index() {
             </p>
             <div className="flex flex-col md:items-end gap-2">
               <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-                Est. MMXXIV · Tāmaki Makaurau
+                Est. MMXXIV · Auckland to Christchurch
               </span>
               <div className="w-12 h-px bg-foreground" />
             </div>
@@ -115,7 +115,7 @@ function Index() {
                 "Trade Services",
                 "Heritage Restoration",
                 "Fit-outs",
-                "Auckland · Aotearoa",
+                "Auckland · Palmerston North · Whanganui · Rotorua · Timaru · Christchurch",
               ].map((t) => (
                 <span key={t} className="font-serif italic text-3xl md:text-5xl text-foreground/80">
                   {t} <span className="text-accent not-italic font-display">✦</span>
@@ -223,7 +223,7 @@ function Index() {
             <div className="mb-16 flex flex-col md:flex-row md:justify-between md:items-end gap-4">
               <h2 className="text-4xl md:text-5xl tracking-tighter">Selected Works</h2>
               <span className="font-mono text-[10px] uppercase tracking-widest text-background/60">
-                2023 — 2025 · Auckland
+                2023 — 2025 · Aotearoa
               </span>
             </div>
           </Reveal>
@@ -345,7 +345,7 @@ function Index() {
       <footer className="border-t border-border py-10 px-6 md:px-10">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-            Six Harmony © {new Date().getFullYear()} — Tāmaki Makaurau / Auckland, Aotearoa
+            Six Harmony © {new Date().getFullYear()} — Auckland · Palmerston North · Whanganui · Rotorua · Timaru · Christchurch
           </p>
           <div className="flex gap-8">
             <a href="#" className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest hover:text-foreground transition-colors">
