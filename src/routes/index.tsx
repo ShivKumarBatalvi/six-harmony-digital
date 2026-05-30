@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Six Harmony is an Auckland-based studio for renovations, facilities management, project management and comprehensive trade services across Aotearoa.",
+          "Six Harmony is a New Zealand studio for renovations, facilities management, project management and comprehensive trade services across Aotearoa.",
       },
       { property: "og:title", content: "Six Harmony — Auckland Builders & Project Management" },
       {
