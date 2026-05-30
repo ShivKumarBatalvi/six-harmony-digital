@@ -95,7 +95,7 @@ function Index() {
             </p>
             <div className="flex flex-col md:items-end gap-2">
               <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-                Est. MMXXIV · Tāmaki Makaurau
+                Est. MMXXIV · Auckland to Christchurch
               </span>
               <div className="w-12 h-px bg-foreground" />
             </div>
