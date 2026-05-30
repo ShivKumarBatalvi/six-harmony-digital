@@ -41,7 +41,7 @@ const services = [
   {
     n: "02",
     title: "Facilities Management",
-    body: "Proactive maintenance programmes, scheduled inspections and rapid-response trades keeping Auckland properties operating at their best.",
+    body: "Proactive maintenance programmes, scheduled inspections and rapid-response trades keeping properties operating at their best across the North and South Islands.",
   },
   {
     n: "03",
