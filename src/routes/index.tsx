@@ -86,7 +86,7 @@ function Index() {
         <div className="relative z-10 max-w-6xl w-full mx-auto">
           <h1 className="text-[clamp(2.75rem,10vw,8rem)] font-medium leading-[0.85] tracking-tighter text-balance animate-reveal [animation-delay:300ms]">
             Refining the<br />
-            <span className="font-serif italic text-accent pr-4">Auckland</span> Landscape
+            <span className="font-serif italic text-accent pr-4">Aotearoa</span> Landscape
           </h1>
           <div className="mt-10 md:mt-12 flex flex-col md:flex-row md:justify-between md:items-end gap-8 animate-reveal [animation-delay:600ms]">
             <p className="max-w-[40ch] text-base md:text-lg leading-snug text-pretty">
