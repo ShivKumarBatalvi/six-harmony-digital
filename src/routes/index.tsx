@@ -223,7 +223,7 @@ function Index() {
             <div className="mb-16 flex flex-col md:flex-row md:justify-between md:items-end gap-4">
               <h2 className="text-4xl md:text-5xl tracking-tighter">Selected Works</h2>
               <span className="font-mono text-[10px] uppercase tracking-widest text-background/60">
-                2023 — 2025 · Auckland
+                2023 — 2025 · Aotearoa
               </span>
             </div>
           </Reveal>
