@@ -83,7 +83,7 @@ function Index() {
           />
         </div>
 
-        <div className="max-w-6xl w-full mx-auto">
+        <div className="relative z-10 max-w-6xl w-full mx-auto">
           <h1 className="text-[clamp(2.75rem,10vw,8rem)] font-medium leading-[0.85] tracking-tighter text-balance animate-reveal [animation-delay:300ms]">
             Refining the<br />
             <span className="font-serif italic text-accent pr-4">Auckland</span> Landscape
