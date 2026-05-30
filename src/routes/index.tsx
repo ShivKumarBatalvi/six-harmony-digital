@@ -71,8 +71,8 @@ function Index() {
       <StickyCta />
 
       {/* HERO */}
-      <header className="relative h-screen min-h-[640px] flex flex-col justify-end px-6 md:px-10 pb-16 md:pb-20 overflow-hidden">
-        <div className="absolute inset-0 -z-10">
+      <header className="relative isolate h-screen min-h-[640px] flex flex-col justify-end px-6 md:px-10 pb-16 md:pb-20 overflow-hidden">
+        <div className="absolute inset-0 z-0">
           <HeroCarousel
             images={[
               { src: heroHome, alt: "Auckland architectural home with board-formed concrete and black cedar at dusk" },
