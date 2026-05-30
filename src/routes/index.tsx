@@ -12,7 +12,7 @@ import { HeroCarousel } from "@/components/site/HeroCarousel";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Six Harmony — Renovations, Facilities & Project Management, Auckland NZ" },
+      { title: "Six Harmony — Renovations, Facilities & Project Management, New Zealand" },
       {
         name: "description",
         content:
