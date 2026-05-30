@@ -71,8 +71,8 @@ function Index() {
       <StickyCta />
 
       {/* HERO */}
-      <header className="relative h-screen min-h-[640px] flex flex-col justify-end px-6 md:px-10 pb-16 md:pb-20 overflow-hidden">
-        <div className="absolute inset-0 -z-10">
+      <header className="relative isolate h-screen min-h-[640px] flex flex-col justify-end px-6 md:px-10 pb-16 md:pb-20 overflow-hidden">
+        <div className="absolute inset-0 z-0">
           <HeroCarousel
             images={[
               { src: heroHome, alt: "Auckland architectural home with board-formed concrete and black cedar at dusk" },
@@ -83,7 +83,7 @@ function Index() {
           />
         </div>
 
-        <div className="max-w-6xl w-full mx-auto">
+        <div className="relative z-10 max-w-6xl w-full mx-auto">
           <h1 className="text-[clamp(2.75rem,10vw,8rem)] font-medium leading-[0.85] tracking-tighter text-balance animate-reveal [animation-delay:300ms]">
             Refining the<br />
             <span className="font-serif italic text-accent pr-4">Auckland</span> Landscape
