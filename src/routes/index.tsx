@@ -7,6 +7,7 @@ import { Nav } from "@/components/site/Nav";
 import { Reveal } from "@/components/site/Reveal";
 import { Counter } from "@/components/site/Counter";
 import { StickyCta } from "@/components/site/StickyCta";
+import { HeroCarousel } from "@/components/site/HeroCarousel";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -72,14 +73,14 @@ function Index() {
       {/* HERO */}
       <header className="relative h-screen min-h-[640px] flex flex-col justify-end px-6 md:px-10 pb-16 md:pb-20 overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <img
-            src={heroHome}
-            alt="Auckland architectural home with board-formed concrete and black cedar at dusk"
-            width={1920}
-            height={1280}
-            className="w-full h-full object-cover animate-scale"
+          <HeroCarousel
+            images={[
+              { src: heroHome, alt: "Auckland architectural home with board-formed concrete and black cedar at dusk" },
+              { src: projectTitirangi, alt: "Black cedar pavilion in Titirangi native bush" },
+              { src: projectPonsonby, alt: "Concrete kitchen island with brass tapware in Ponsonby villa" },
+              { src: projectParnell, alt: "Detail of seamless white oak joinery and plaster" },
+            ]}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-background/30" />
         </div>
 
         <div className="max-w-6xl w-full mx-auto">
