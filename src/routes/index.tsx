@@ -130,24 +130,26 @@ function Index() {
       <section id="studio" className="py-24 md:py-32 px-6 md:px-10 border-b border-border">
         <div className="max-w-6xl mx-auto">
           <div className="h-px bg-border mb-16 animate-line-grow" />
-          {[
-            { n: "01", v: 240, s: "+", l: "Renovations Completed" },
-            { n: "02", v: 92, s: "%", l: "Repeat Clients" },
-            { n: "03", v: 18, s: "+", l: "Years of Expertise" },
-            { n: "04", v: 100, s: "%", l: "Aotearoa Owned" },
-          ].map((s, i) => (
-            <Reveal key={s.n} delay={i * 100}>
-              <div className="flex flex-col gap-4">
-                <span className="font-mono text-[10px] uppercase text-accent tracking-widest">
-                  Metric.{s.n}
-                </span>
-                <div className="text-4xl md:text-5xl font-medium tracking-tight">
-                  <Counter to={s.v} suffix={s.s} />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+            {[
+              { n: "01", v: 240, s: "+", l: "Renovations Completed" },
+              { n: "02", v: 92, s: "%", l: "Repeat Clients" },
+              { n: "03", v: 18, s: "+", l: "Years of Expertise" },
+              { n: "04", v: 100, s: "%", l: "Aotearoa Owned" },
+            ].map((s, i) => (
+              <Reveal key={s.n} delay={i * 100}>
+                <div className="flex flex-col gap-4">
+                  <span className="font-mono text-[10px] uppercase text-accent tracking-widest">
+                    Metric.{s.n}
+                  </span>
+                  <div className="text-4xl md:text-5xl font-medium tracking-tight">
+                    <Counter to={s.v} suffix={s.s} />
+                  </div>
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground">{s.l}</p>
                 </div>
-                <p className="text-xs uppercase tracking-widest text-muted-foreground">{s.l}</p>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
