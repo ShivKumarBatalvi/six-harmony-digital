@@ -302,6 +302,7 @@ function Index() {
       <section className="py-24 md:py-32 px-6 md:px-10 border-b border-border">
         <div className="max-w-4xl mx-auto text-center">
           <Reveal>
+            <div className="h-px bg-border mb-16 animate-line-grow" style={{ animationDelay: '0.2s' }} />
             <span className="font-mono text-[10px] uppercase text-accent tracking-widest">
               Testimonial · 01
             </span>
