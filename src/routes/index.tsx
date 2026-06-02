@@ -95,9 +95,9 @@ function Index() {
             </p>
             <div className="flex flex-col md:items-end gap-2">
               <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-                Est. MMXXIV · Based in Waimataitai, Timaru
+                Est. MMXXIV · Based in Auckland
               </span>
-              <div className="w-12 h-px bg-foreground" />
+              <div className="w-12 h-px bg-foreground animate-float" />
             </div>
           </div>
         </div>
@@ -118,7 +118,7 @@ function Index() {
                 "Auckland · Palmerston North · Whanganui · Rotorua · Timaru · Christchurch",
               ].map((t) => (
                 <span key={t} className="font-serif italic text-3xl md:text-5xl text-foreground/80">
-                  {t} <span className="text-accent not-italic font-display">✦</span>
+                  {t} <span className="text-accent not-italic font-display animate-glow animate-spin-slow inline-block">✦</span>
                 </span>
               ))}
             </div>
@@ -128,25 +128,28 @@ function Index() {
 
       {/* STATS */}
       <section id="studio" className="py-24 md:py-32 px-6 md:px-10 border-b border-border">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12">
-          {[
-            { n: "01", v: 240, s: "+", l: "Renovations Completed" },
-            { n: "02", v: 92, s: "%", l: "Repeat Clients" },
-            { n: "03", v: 18, s: "+", l: "Years of Expertise" },
-            { n: "04", v: 100, s: "%", l: "Aotearoa Owned" },
-          ].map((s, i) => (
-            <Reveal key={s.n} delay={i * 100}>
-              <div className="flex flex-col gap-4">
-                <span className="font-mono text-[10px] uppercase text-accent tracking-widest">
-                  Metric.{s.n}
-                </span>
-                <div className="text-4xl md:text-5xl font-medium tracking-tight">
-                  <Counter to={s.v} suffix={s.s} />
+        <div className="max-w-6xl mx-auto">
+          <div className="h-px bg-border mb-16 animate-line-grow" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+            {[
+              { n: "01", v: 240, s: "+", l: "Renovations Completed" },
+              { n: "02", v: 92, s: "%", l: "Repeat Clients" },
+              { n: "03", v: 18, s: "+", l: "Years of Expertise" },
+              { n: "04", v: 100, s: "%", l: "Aotearoa Owned" },
+            ].map((s, i) => (
+              <Reveal key={s.n} delay={i * 100}>
+                <div className="flex flex-col gap-4">
+                  <span className="font-mono text-[10px] uppercase text-accent tracking-widest">
+                    Metric.{s.n}
+                  </span>
+                  <div className="text-4xl md:text-5xl font-medium tracking-tight">
+                    <Counter to={s.v} suffix={s.s} />
+                  </div>
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground">{s.l}</p>
                 </div>
-                <p className="text-xs uppercase tracking-widest text-muted-foreground">{s.l}</p>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -165,9 +168,9 @@ function Index() {
           <div className="grid md:grid-cols-2 gap-px bg-border border border-border">
             {services.map((s, i) => (
               <Reveal key={s.n} delay={i * 80}>
-                <article className="group bg-background p-10 md:p-12 md:aspect-square flex flex-col justify-between gap-12 transition-colors duration-500 hover:bg-card">
+                <article className="group bg-background p-10 md:p-12 md:aspect-square flex flex-col justify-between gap-12 transition-all duration-500 hover:bg-card hover:-translate-y-1 hover:shadow-[0_0_40px_-12px_rgba(184,152,120,0.15)]">
                   <div className="flex justify-between items-start">
-                    <span className="text-xs font-mono text-muted-foreground">{s.n}/</span>
+                    <span className="text-xs font-mono text-muted-foreground group-hover:text-accent transition-colors duration-500">{s.n}/</span>
                     <span className="text-xs font-mono text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       ↗
                     </span>
@@ -230,7 +233,7 @@ function Index() {
 
           <div className="grid grid-cols-12 gap-6 md:gap-8">
             <Reveal className="col-span-12 md:col-span-7" delay={0}>
-              <figure>
+                <figure className="group/project">
                 <div className="overflow-hidden">
                   <img
                     src={projectTitirangi}
@@ -238,7 +241,7 @@ function Index() {
                     width={1200}
                     height={1500}
                     loading="lazy"
-                    className="aspect-[4/5] w-full object-cover hover:scale-[1.03] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
+                    className="aspect-[4/5] w-full object-cover group-hover/project:scale-[1.04] group-hover/project:rotate-[0.5deg] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
                   />
                 </div>
                 <figcaption className="mt-6">
@@ -251,7 +254,7 @@ function Index() {
             </Reveal>
 
             <Reveal className="col-span-12 md:col-span-5 md:mt-32" delay={150}>
-              <figure>
+                <figure className="group/project">
                 <div className="overflow-hidden">
                   <img
                     src={projectPonsonby}
@@ -259,7 +262,7 @@ function Index() {
                     width={1000}
                     height={1300}
                     loading="lazy"
-                    className="aspect-[3/4] w-full object-cover hover:scale-[1.03] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
+                    className="aspect-[3/4] w-full object-cover group-hover/project:scale-[1.04] group-hover/project:rotate-[0.5deg] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
                   />
                 </div>
                 <figcaption className="mt-6">
@@ -272,7 +275,7 @@ function Index() {
             </Reveal>
 
             <Reveal className="col-span-12 md:col-span-6 md:col-start-4" delay={250}>
-              <figure>
+                <figure className="group/project">
                 <div className="overflow-hidden">
                   <img
                     src={projectParnell}
@@ -280,7 +283,7 @@ function Index() {
                     width={1000}
                     height={1300}
                     loading="lazy"
-                    className="aspect-[5/4] w-full object-cover hover:scale-[1.03] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
+                    className="aspect-[5/4] w-full object-cover group-hover/project:scale-[1.04] group-hover/project:rotate-[0.5deg] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
                   />
                 </div>
                 <figcaption className="mt-6">
@@ -299,6 +302,7 @@ function Index() {
       <section className="py-24 md:py-32 px-6 md:px-10 border-b border-border">
         <div className="max-w-4xl mx-auto text-center">
           <Reveal>
+            <div className="h-px bg-border mb-16 animate-line-grow" style={{ animationDelay: '0.2s' }} />
             <span className="font-mono text-[10px] uppercase text-accent tracking-widest">
               Testimonial · 01
             </span>
@@ -326,15 +330,17 @@ function Index() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="mailto:hello@sixharmony.co.nz"
-                className="inline-block bg-foreground text-background px-10 py-5 text-xs uppercase tracking-[0.3em] font-medium hover:bg-accent transition-colors"
+                className="relative inline-block bg-foreground text-background px-10 py-5 text-xs uppercase tracking-[0.3em] font-medium overflow-hidden group/btn hover:bg-accent transition-colors"
               >
-                Request a Quote
+                <span className="relative z-10">Request a Quote</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-background/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
               </a>
               <a
                 href="tel:+6493000600"
-                className="inline-block border border-foreground px-10 py-5 text-xs uppercase tracking-[0.3em] font-medium hover:bg-foreground hover:text-background transition-colors"
+                className="relative inline-block border border-foreground px-10 py-5 text-xs uppercase tracking-[0.3em] font-medium hover:bg-foreground hover:text-background transition-colors overflow-hidden group/btn2"
               >
-                +64 9 300 0600
+                <span className="relative z-10">+64 9 300 0600</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/10 to-transparent -translate-x-full group-hover/btn2:translate-x-full transition-transform duration-700" />
               </a>
             </div>
           </Reveal>
@@ -345,13 +351,13 @@ function Index() {
       <footer className="border-t border-border py-10 px-6 md:px-10">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-            Six Harmony © {new Date().getFullYear()} — Based in Waimataitai, Timaru · Serving Auckland, Palmerston North, Whanganui, Rotorua, Timaru & Christchurch
+            Six Harmony © {new Date().getFullYear()} — Based in Auckland · Serving Palmerston North, Whanganui, Rotorua, Timaru & Christchurch
           </p>
           <div className="flex gap-8">
-            <a href="#" className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest hover:text-foreground transition-colors">
+            <a href="#" className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest hover:text-foreground hover:scale-110 transition-all duration-300">
               Instagram
             </a>
-            <a href="#" className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest hover:text-foreground transition-colors">
+            <a href="#" className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest hover:text-foreground hover:scale-110 transition-all duration-300">
               LinkedIn
             </a>
           </div>
