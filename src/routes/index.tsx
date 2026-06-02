@@ -329,15 +329,17 @@ function Index() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="mailto:hello@sixharmony.co.nz"
-                className="inline-block bg-foreground text-background px-10 py-5 text-xs uppercase tracking-[0.3em] font-medium hover:bg-accent transition-colors"
+                className="relative inline-block bg-foreground text-background px-10 py-5 text-xs uppercase tracking-[0.3em] font-medium overflow-hidden group/btn hover:bg-accent transition-colors"
               >
-                Request a Quote
+                <span className="relative z-10">Request a Quote</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-background/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
               </a>
               <a
                 href="tel:+6493000600"
-                className="inline-block border border-foreground px-10 py-5 text-xs uppercase tracking-[0.3em] font-medium hover:bg-foreground hover:text-background transition-colors"
+                className="relative inline-block border border-foreground px-10 py-5 text-xs uppercase tracking-[0.3em] font-medium hover:bg-foreground hover:text-background transition-colors overflow-hidden group/btn2"
               >
-                +64 9 300 0600
+                <span className="relative z-10">+64 9 300 0600</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/10 to-transparent -translate-x-full group-hover/btn2:translate-x-full transition-transform duration-700" />
               </a>
             </div>
           </Reveal>
