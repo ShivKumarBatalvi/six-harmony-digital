@@ -1,6 +1,7 @@
 export function Nav() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-6 md:py-8 flex justify-between items-end mix-blend-difference text-background pointer-events-none">
+    <nav className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-6 md:py-8 flex justify-between items-end text-foreground pointer-events-none">
+      <div className="absolute inset-0 bg-background/60 backdrop-blur-md -z-10" />
       <a href="#top" className="pointer-events-auto text-base md:text-lg font-medium tracking-tight uppercase">
         Six Harmony
       </a>
