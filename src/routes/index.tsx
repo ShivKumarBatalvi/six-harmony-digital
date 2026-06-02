@@ -118,7 +118,7 @@ function Index() {
                 "Auckland · Palmerston North · Whanganui · Rotorua · Timaru · Christchurch",
               ].map((t) => (
                 <span key={t} className="font-serif italic text-3xl md:text-5xl text-foreground/80">
-                  {t} <span className="text-accent not-italic font-display">✦</span>
+                  {t} <span className="text-accent not-italic font-display animate-glow animate-spin-slow inline-block">✦</span>
                 </span>
               ))}
             </div>
