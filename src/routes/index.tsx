@@ -354,10 +354,10 @@ function Index() {
             Six Harmony © {new Date().getFullYear()} — Based in Auckland · Serving Palmerston North, Whanganui, Rotorua, Timaru & Christchurch
           </p>
           <div className="flex gap-8">
-            <a href="#" className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest hover:text-foreground transition-colors">
+            <a href="#" className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest hover:text-foreground hover:scale-110 transition-all duration-300">
               Instagram
             </a>
-            <a href="#" className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest hover:text-foreground transition-colors">
+            <a href="#" className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest hover:text-foreground hover:scale-110 transition-all duration-300">
               LinkedIn
             </a>
           </div>
