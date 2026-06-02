@@ -128,7 +128,8 @@ function Index() {
 
       {/* STATS */}
       <section id="studio" className="py-24 md:py-32 px-6 md:px-10 border-b border-border">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12">
+        <div className="max-w-6xl mx-auto">
+          <div className="h-px bg-border mb-16 animate-line-grow" />
           {[
             { n: "01", v: 240, s: "+", l: "Renovations Completed" },
             { n: "02", v: 92, s: "%", l: "Repeat Clients" },
