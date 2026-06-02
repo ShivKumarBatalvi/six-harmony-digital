@@ -345,7 +345,7 @@ function Index() {
       <footer className="border-t border-border py-10 px-6 md:px-10">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-            Six Harmony © {new Date().getFullYear()} — Based in Waimataitai, Timaru · Serving Auckland, Palmerston North, Whanganui, Rotorua, Timaru & Christchurch
+            Six Harmony © {new Date().getFullYear()} — Based in Auckland · Serving Palmerston North, Whanganui, Rotorua, Timaru & Christchurch
           </p>
           <div className="flex gap-8">
             <a href="#" className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest hover:text-foreground transition-colors">
