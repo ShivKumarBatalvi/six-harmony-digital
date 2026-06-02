@@ -254,7 +254,7 @@ function Index() {
             </Reveal>
 
             <Reveal className="col-span-12 md:col-span-5 md:mt-32" delay={150}>
-              <figure>
+                <figure className="group/project">
                 <div className="overflow-hidden">
                   <img
                     src={projectPonsonby}
@@ -262,7 +262,7 @@ function Index() {
                     width={1000}
                     height={1300}
                     loading="lazy"
-                    className="aspect-[3/4] w-full object-cover hover:scale-[1.03] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
+                    className="aspect-[3/4] w-full object-cover group-hover/project:scale-[1.04] group-hover/project:rotate-[0.5deg] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
                   />
                 </div>
                 <figcaption className="mt-6">
@@ -275,7 +275,7 @@ function Index() {
             </Reveal>
 
             <Reveal className="col-span-12 md:col-span-6 md:col-start-4" delay={250}>
-              <figure>
+                <figure className="group/project">
                 <div className="overflow-hidden">
                   <img
                     src={projectParnell}
@@ -283,7 +283,7 @@ function Index() {
                     width={1000}
                     height={1300}
                     loading="lazy"
-                    className="aspect-[5/4] w-full object-cover hover:scale-[1.03] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
+                    className="aspect-[5/4] w-full object-cover group-hover/project:scale-[1.04] group-hover/project:rotate-[0.5deg] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
                   />
                 </div>
                 <figcaption className="mt-6">
