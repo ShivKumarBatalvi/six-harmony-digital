@@ -233,7 +233,7 @@ function Index() {
 
           <div className="grid grid-cols-12 gap-6 md:gap-8">
             <Reveal className="col-span-12 md:col-span-7" delay={0}>
-              <figure>
+                <figure className="group/project">
                 <div className="overflow-hidden">
                   <img
                     src={projectTitirangi}
@@ -241,7 +241,7 @@ function Index() {
                     width={1200}
                     height={1500}
                     loading="lazy"
-                    className="aspect-[4/5] w-full object-cover hover:scale-[1.03] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
+                    className="aspect-[4/5] w-full object-cover group-hover/project:scale-[1.04] group-hover/project:rotate-[0.5deg] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
                   />
                 </div>
                 <figcaption className="mt-6">
