@@ -165,9 +165,9 @@ function Index() {
           <div className="grid md:grid-cols-2 gap-px bg-border border border-border">
             {services.map((s, i) => (
               <Reveal key={s.n} delay={i * 80}>
-                <article className="group bg-background p-10 md:p-12 md:aspect-square flex flex-col justify-between gap-12 transition-colors duration-500 hover:bg-card">
+                <article className="group bg-background p-10 md:p-12 md:aspect-square flex flex-col justify-between gap-12 transition-all duration-500 hover:bg-card hover:-translate-y-1 hover:shadow-[0_0_40px_-12px_rgba(184,152,120,0.15)]">
                   <div className="flex justify-between items-start">
-                    <span className="text-xs font-mono text-muted-foreground">{s.n}/</span>
+                    <span className="text-xs font-mono text-muted-foreground group-hover:text-accent transition-colors duration-500">{s.n}/</span>
                     <span className="text-xs font-mono text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       ↗
                     </span>
