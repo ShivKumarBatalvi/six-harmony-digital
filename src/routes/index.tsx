@@ -97,7 +97,7 @@ function Index() {
               <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
                 Est. MMXXIV · Based in Auckland
               </span>
-              <div className="w-12 h-px bg-foreground" />
+              <div className="w-12 h-px bg-foreground animate-float" />
             </div>
           </div>
         </div>
