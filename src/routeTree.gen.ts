@@ -9,8 +9,27 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as FacilitiesManagementRouteImport } from './routes/facilities-management'
+import { Route as CommercialPropertyMaintenanceRouteImport } from './routes/commercial-property-maintenance'
+import { Route as CommercialCleaningRouteImport } from './routes/commercial-cleaning'
 import { Route as IndexRouteImport } from './routes/index'
 
+const FacilitiesManagementRoute = FacilitiesManagementRouteImport.update({
+  id: '/facilities-management',
+  path: '/facilities-management',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommercialPropertyMaintenanceRoute =
+  CommercialPropertyMaintenanceRouteImport.update({
+    id: '/commercial-property-maintenance',
+    path: '/commercial-property-maintenance',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CommercialCleaningRoute = CommercialCleaningRouteImport.update({
+  id: '/commercial-cleaning',
+  path: '/commercial-cleaning',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +38,74 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/commercial-cleaning': typeof CommercialCleaningRoute
+  '/commercial-property-maintenance': typeof CommercialPropertyMaintenanceRoute
+  '/facilities-management': typeof FacilitiesManagementRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/commercial-cleaning': typeof CommercialCleaningRoute
+  '/commercial-property-maintenance': typeof CommercialPropertyMaintenanceRoute
+  '/facilities-management': typeof FacilitiesManagementRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/commercial-cleaning': typeof CommercialCleaningRoute
+  '/commercial-property-maintenance': typeof CommercialPropertyMaintenanceRoute
+  '/facilities-management': typeof FacilitiesManagementRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/commercial-cleaning'
+    | '/commercial-property-maintenance'
+    | '/facilities-management'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/commercial-cleaning'
+    | '/commercial-property-maintenance'
+    | '/facilities-management'
+  id:
+    | '__root__'
+    | '/'
+    | '/commercial-cleaning'
+    | '/commercial-property-maintenance'
+    | '/facilities-management'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CommercialCleaningRoute: typeof CommercialCleaningRoute
+  CommercialPropertyMaintenanceRoute: typeof CommercialPropertyMaintenanceRoute
+  FacilitiesManagementRoute: typeof FacilitiesManagementRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/facilities-management': {
+      id: '/facilities-management'
+      path: '/facilities-management'
+      fullPath: '/facilities-management'
+      preLoaderRoute: typeof FacilitiesManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/commercial-property-maintenance': {
+      id: '/commercial-property-maintenance'
+      path: '/commercial-property-maintenance'
+      fullPath: '/commercial-property-maintenance'
+      preLoaderRoute: typeof CommercialPropertyMaintenanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/commercial-cleaning': {
+      id: '/commercial-cleaning'
+      path: '/commercial-cleaning'
+      fullPath: '/commercial-cleaning'
+      preLoaderRoute: typeof CommercialCleaningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +118,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CommercialCleaningRoute: CommercialCleaningRoute,
+  CommercialPropertyMaintenanceRoute: CommercialPropertyMaintenanceRoute,
+  FacilitiesManagementRoute: FacilitiesManagementRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
