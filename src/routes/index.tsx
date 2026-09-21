@@ -1,368 +1,65 @@
-import { createFileRoute } from "@tanstack/react-router";
-import heroHome from "@/assets/hero-home.jpg";
-import projectTitirangi from "@/assets/project-titirangi.jpg";
-import projectPonsonby from "@/assets/project-ponsonby.jpg";
-import projectParnell from "@/assets/project-parnell.jpg";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, Check } from "lucide-react";
+import commercialCleaning from "@/assets/commercial-cleaning.jpg";
+import facilitiesManagement from "@/assets/facilities-management.jpg";
+import propertyMaintenance from "@/assets/property-maintenance.jpg";
+import { Button } from "@/components/ui/button";
 import { Nav } from "@/components/site/Nav";
 import { Reveal } from "@/components/site/Reveal";
-import { Counter } from "@/components/site/Counter";
 import { StickyCta } from "@/components/site/StickyCta";
 import { HeroCarousel } from "@/components/site/HeroCarousel";
+import { EnquiryForm } from "@/components/site/EnquiryForm";
+
+const baseUrl = "https://sixharmony.co.nz";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Six Harmony — Renovations, Facilities & Project Management, New Zealand" },
-      {
-        name: "description",
-        content:
-          "Six Harmony is a New Zealand studio for renovations, facilities management, project management and comprehensive trade services across Aotearoa.",
-      },
-      { property: "og:title", content: "Six Harmony — NZ Builders & Project Management" },
-      {
-        property: "og:description",
-        content:
-          "Premium renovations, facilities and project management for discerning clients across New Zealand.",
-      },
-      { property: "og:image", content: heroHome },
-      { name: "twitter:image", content: heroHome },
+      { title: "Commercial Cleaning & Facilities Management NZ | Six Harmony" },
+      { name: "description", content: "Commercial cleaning, facilities management and property maintenance for workplaces and commercial properties across six New Zealand locations." },
+      { property: "og:title", content: "Commercial Property Services | Six Harmony" },
+      { property: "og:description", content: "One accountable team for commercial cleaning, facilities management and property maintenance across New Zealand." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: baseUrl },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: baseUrl }],
   }),
   component: Index,
 });
 
 const services = [
-  {
-    n: "01",
-    title: "Renovations",
-    body: "Commercial and residential renovations delivered with precision joinery, refined finishes and zero-disruption staging on busy sites.",
-  },
-  {
-    n: "02",
-    title: "Facilities Management",
-    body: "Proactive maintenance programmes, scheduled inspections and rapid-response trades keeping properties operating at their best across the North and South Islands.",
-  },
-  {
-    n: "03",
-    title: "Project Management",
-    body: "Sophisticated management of high-value developments — from consent and procurement to handover, with transparent reporting throughout.",
-  },
-  {
-    n: "04",
-    title: "Comprehensive Trade Services",
-    body: "A vetted bench of master tradespeople — carpenters, electricians, plumbers, painters — coordinated under a single point of accountability.",
-  },
+  { title: "Commercial Cleaning", body: "Scheduled cleaning for offices, retail, body corporates, warehouses and construction sites — including windows, carpets, hard floors and final cleans.", image: commercialCleaning, to: "/commercial-cleaning" as const },
+  { title: "Facilities Management", body: "Planned and reactive services, inspections and contractor coordination, with one clear point of contact for the property team.", image: facilitiesManagement, to: "/facilities-management" as const },
+  { title: "Commercial Property Maintenance", body: "Electrical, plumbing, HVAC, painting and carpentry work coordinated around your site, occupants and operating hours.", image: propertyMaintenance, to: "/commercial-property-maintenance" as const },
 ];
 
-const pillars = [
-  "Consistent delivery on busy commercial sites",
-  "Strong project leadership from brief to handover",
-  "Health and safety engineered into every job",
-  "Clear, weekly communication — no surprises",
-  "Reliable, repeat trades with proven track record",
-  "Transparent fixed-fee or open-book pricing",
-];
+const sectors = ["Offices", "Retail", "Property management", "Body corporates", "Industrial & warehouses", "Education", "Healthcare", "Hospitality", "Construction"];
+const locations = ["Auckland", "Palmerston North", "Whanganui", "Rotorua", "Timaru", "Christchurch"];
 
 function Index() {
-  return (
-    <div id="top" className="min-h-screen bg-background text-foreground font-display pb-20">
-      <Nav />
-      <StickyCta />
+  return <div id="top" className="min-h-screen bg-background pb-20 text-foreground">
+    <Nav /><StickyCta />
+    <header className="relative isolate flex min-h-[720px] h-[92vh] flex-col justify-end overflow-hidden px-6 pb-16 md:px-10 md:pb-20">
+      <div className="absolute inset-0 z-0"><HeroCarousel images={[{ src: commercialCleaning, alt: "Commercial cleaning team working in a modern office" }, { src: facilitiesManagement, alt: "Facilities technician inspecting commercial building systems" }, { src: propertyMaintenance, alt: "Commercial property maintenance inspection" }]} /></div>
+      <div className="relative z-10 mx-auto w-full max-w-6xl">
+        <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">Commercial property services · New Zealand</p>
+        <h1 className="mt-5 max-w-6xl text-[clamp(3rem,9vw,7.5rem)] font-medium leading-[0.86] animate-reveal">Your sites.<br/><span className="font-serif italic text-accent">Working better.</span></h1>
+        <div className="mt-9 flex flex-col gap-8 md:flex-row md:items-end md:justify-between"><p className="max-w-2xl text-lg leading-relaxed md:text-xl">Commercial cleaning, facilities management and property maintenance delivered through one accountable team.</p><Button asChild size="lg" className="h-auto shrink-0 rounded-none px-7 py-4 text-xs uppercase tracking-[0.16em]"><a href="#enquire">Request a free site assessment <ArrowRight /></a></Button></div>
+      </div>
+    </header>
 
-      {/* HERO */}
-      <header className="relative isolate h-screen min-h-[640px] flex flex-col justify-end px-6 md:px-10 pb-16 md:pb-20 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <HeroCarousel
-            images={[
-              { src: heroHome, alt: "Auckland architectural home with board-formed concrete and black cedar at dusk" },
-              { src: projectTitirangi, alt: "Black cedar pavilion in Titirangi native bush" },
-              { src: projectPonsonby, alt: "Concrete kitchen island with brass tapware in Ponsonby villa" },
-              { src: projectParnell, alt: "Detail of seamless white oak joinery and plaster" },
-            ]}
-          />
-        </div>
+    <section className="border-y border-border overflow-hidden py-5"><div className="flex gap-12 whitespace-nowrap animate-marquee">{Array.from({ length: 2 }).map((_, duplicate) => <div key={duplicate} className="flex shrink-0 gap-12">{locations.map((location) => <span key={location} className="text-xl md:text-3xl">{location} <span className="ml-8 text-accent">✦</span></span>)}</div>)}</div></section>
 
-        <div className="relative z-10 max-w-6xl w-full mx-auto">
-          <h1 className="text-[clamp(2.75rem,10vw,8rem)] font-medium leading-[0.85] tracking-tighter text-balance animate-reveal [animation-delay:300ms]">
-            Refining the<br />
-            <span className="font-serif italic text-accent pr-4">Aotearoa</span> Landscape
-          </h1>
-          <div className="mt-10 md:mt-12 flex flex-col md:flex-row md:justify-between md:items-end gap-8 animate-reveal [animation-delay:600ms]">
-            <p className="max-w-[40ch] text-base md:text-lg leading-snug text-pretty">
-              Six Harmony is a New Zealand renovations, facilities and project
-              management studio dedicated to the precision of form and the honesty of materials.
-            </p>
-            <div className="flex flex-col md:items-end gap-2">
-              <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-                Est. MMXXIV · Based in Auckland
-              </span>
-              <div className="w-12 h-px bg-foreground animate-float" />
-            </div>
-          </div>
-        </div>
-      </header>
+    <section id="services" className="px-6 py-24 md:px-10 md:py-32"><div className="mx-auto max-w-6xl"><Reveal><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">Core services</p><div className="mt-5 flex flex-col gap-5 md:flex-row md:items-end md:justify-between"><h2 className="max-w-3xl text-4xl leading-none md:text-6xl">Reliable service, without the fragmented supply chain.</h2><p className="max-w-sm text-muted-foreground">Choose a focused service or combine cleaning and maintenance under a coordinated programme.</p></div></Reveal><div className="mt-16 grid gap-px bg-border lg:grid-cols-3">{services.map((service, index) => <Reveal key={service.title} delay={index * 100}><article className="group flex h-full flex-col bg-background"><div className="overflow-hidden"><img src={service.image} alt="" width={1600} height={1008} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" /></div><div className="flex flex-1 flex-col p-8"><span className="font-mono text-[10px] text-accent">0{index + 1}</span><h3 className="mt-8 text-2xl">{service.title}</h3><p className="mt-4 flex-1 leading-relaxed text-muted-foreground">{service.body}</p><Button asChild variant="link" className="mt-7 h-auto justify-start p-0 text-accent"><Link to={service.to}>Explore service <ArrowRight /></Link></Button></div></article></Reveal>)}</div></div></section>
 
-      {/* MARQUEE */}
-      <section className="border-y border-border overflow-hidden py-6 bg-background">
-        <div className="flex gap-16 whitespace-nowrap animate-marquee will-change-transform">
-          {Array.from({ length: 2 }).map((_, dup) => (
-            <div key={dup} className="flex gap-16 shrink-0">
-              {[
-                "Commercial Renovations",
-                "Facilities Management",
-                "Project Management",
-                "Trade Services",
-                "Heritage Restoration",
-                "Fit-outs",
-                "Auckland · Palmerston North · Whanganui · Rotorua · Timaru · Christchurch",
-              ].map((t) => (
-                <span key={t} className="font-serif italic text-3xl md:text-5xl text-foreground/80">
-                  {t} <span className="text-accent not-italic font-display animate-glow animate-spin-slow inline-block">✦</span>
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </section>
+    <section className="border-y border-border bg-card/60 px-6 py-24 md:px-10"><div className="mx-auto grid max-w-6xl gap-14 md:grid-cols-12"><div className="md:col-span-4"><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">Sectors</p><h2 className="mt-5 text-4xl">Built for occupied, operational sites.</h2><p className="mt-6 leading-relaxed text-muted-foreground">Service plans are shaped around access, foot traffic, compliance needs and business hours.</p></div><ul className="grid gap-px bg-border sm:grid-cols-2 md:col-span-8">{sectors.map((sector) => <li key={sector} className="flex items-center gap-3 bg-background p-5"><Check size={16} className="text-accent" />{sector}</li>)}</ul></div></section>
 
-      {/* STATS */}
-      <section id="studio" className="py-24 md:py-32 px-6 md:px-10 border-b border-border">
-        <div className="max-w-6xl mx-auto">
-          <div className="h-px bg-border mb-16 animate-line-grow" />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
-            {[
-              { n: "01", v: 240, s: "+", l: "Renovations Completed" },
-              { n: "02", v: 92, s: "%", l: "Repeat Clients" },
-              { n: "03", v: 18, s: "+", l: "Years of Expertise" },
-              { n: "04", v: 100, s: "%", l: "Aotearoa Owned" },
-            ].map((s, i) => (
-              <Reveal key={s.n} delay={i * 100}>
-                <div className="flex flex-col gap-4">
-                  <span className="font-mono text-[10px] uppercase text-accent tracking-widest">
-                    Metric.{s.n}
-                  </span>
-                  <div className="text-4xl md:text-5xl font-medium tracking-tight">
-                    <Counter to={s.v} suffix={s.s} />
-                  </div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground">{s.l}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+    <section className="px-6 py-24 md:px-10 md:py-32"><div className="mx-auto grid max-w-6xl gap-14 md:grid-cols-12"><div className="md:col-span-5"><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">Commercial confidence</p><h2 className="mt-5 text-4xl leading-none md:text-5xl">A procurement conversation grounded in your requirements.</h2></div><div className="grid gap-px bg-border sm:grid-cols-2 md:col-span-7">{["Site-specific scope and schedule", "Clear service coordination", "Tender and procurement support", "Documentation by request"].map((item) => <div key={item} className="bg-background p-7 text-lg">{item}</div>)}</div></div></section>
 
-      {/* SERVICES */}
-      <section id="services" className="py-24 md:py-32 px-6 md:px-10">
-        <div className="max-w-6xl mx-auto">
-          <Reveal>
-            <div className="mb-16 md:mb-20 flex flex-col md:flex-row md:justify-between md:items-baseline gap-4">
-              <h2 className="text-4xl md:text-5xl tracking-tighter">Our Core Disciplines</h2>
-              <span className="font-serif italic text-xl md:text-2xl text-accent">
-                Building with intent.
-              </span>
-            </div>
-          </Reveal>
+    <section className="border-y border-border bg-foreground px-6 py-24 text-background md:px-10"><div className="mx-auto max-w-6xl"><div className="grid gap-12 md:grid-cols-2"><div><p className="font-mono text-[10px] uppercase tracking-[0.25em] opacity-60">Case studies</p><h2 className="mt-5 text-4xl">Relevant project evidence, discussed directly.</h2><p className="mt-6 max-w-lg leading-relaxed opacity-70">Request examples suited to your sector, property type and service scope as part of the site-assessment process.</p></div><div><p className="font-mono text-[10px] uppercase tracking-[0.25em] opacity-60">Client testimonials</p><h2 className="mt-5 text-4xl">References for procurement teams.</h2><p className="mt-6 max-w-lg leading-relaxed opacity-70">Include your reference requirements in the enquiry so they can be addressed alongside scope, timing and documentation.</p></div></div><Button asChild className="mt-10 h-auto rounded-none bg-background px-7 py-4 text-xs uppercase tracking-[0.18em] text-foreground hover:bg-accent"><a href="mailto:admin@sixharmony.co.nz?subject=Tender%20%2F%20Procurement%20Enquiry">Tender / procurement enquiry <ArrowRight /></a></Button></div></section>
 
-          <div className="grid md:grid-cols-2 gap-px bg-border border border-border">
-            {services.map((s, i) => (
-              <Reveal key={s.n} delay={i * 80}>
-                <article className="group bg-background p-10 md:p-12 md:aspect-square flex flex-col justify-between gap-12 transition-all duration-500 hover:bg-card hover:-translate-y-1 hover:shadow-[0_0_40px_-12px_rgba(184,152,120,0.15)]">
-                  <div className="flex justify-between items-start">
-                    <span className="text-xs font-mono text-muted-foreground group-hover:text-accent transition-colors duration-500">{s.n}/</span>
-                    <span className="text-xs font-mono text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      ↗
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl md:text-3xl mb-4 tracking-tight">{s.title}</h3>
-                    <p className="text-muted-foreground max-w-[36ch] leading-relaxed">{s.body}</p>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* WHY CHOOSE */}
-      <section className="py-24 md:py-32 px-6 md:px-10 border-t border-border bg-card/60">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-12 gap-12">
-          <div className="md:col-span-5">
-            <Reveal>
-              <span className="font-mono text-[10px] uppercase text-accent tracking-widest">
-                Why Six Harmony
-              </span>
-              <h2 className="mt-6 text-4xl md:text-5xl tracking-tighter leading-[0.95]">
-                Six pillars.<br />
-                <span className="font-serif italic text-accent">One harmony.</span>
-              </h2>
-            </Reveal>
-          </div>
-          <div className="md:col-span-7">
-            <ul className="divide-y divide-border border-y border-border">
-              {pillars.map((p, i) => (
-                <Reveal key={p} delay={i * 60}>
-                  <li className="py-6 flex items-baseline gap-8 group">
-                    <span className="font-mono text-[10px] text-muted-foreground tracking-widest w-8 shrink-0">
-                      0{i + 1}
-                    </span>
-                    <span className="text-xl md:text-2xl tracking-tight group-hover:text-accent transition-colors duration-500">
-                      {p}
-                    </span>
-                  </li>
-                </Reveal>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURED PROJECTS */}
-      <section id="projects" className="bg-foreground text-background py-24 md:py-32 px-6 md:px-10">
-        <div className="max-w-6xl mx-auto">
-          <Reveal>
-            <div className="mb-16 flex flex-col md:flex-row md:justify-between md:items-end gap-4">
-              <h2 className="text-4xl md:text-5xl tracking-tighter">Selected Works</h2>
-              <span className="font-mono text-[10px] uppercase tracking-widest text-background/60">
-                2023 — 2025 · Aotearoa
-              </span>
-            </div>
-          </Reveal>
-
-          <div className="grid grid-cols-12 gap-6 md:gap-8">
-            <Reveal className="col-span-12 md:col-span-7" delay={0}>
-                <figure className="group/project">
-                <div className="overflow-hidden">
-                  <img
-                    src={projectTitirangi}
-                    alt="Black cedar pavilion in Titirangi native bush"
-                    width={1200}
-                    height={1500}
-                    loading="lazy"
-                    className="aspect-[4/5] w-full object-cover group-hover/project:scale-[1.04] group-hover/project:rotate-[0.5deg] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
-                  />
-                </div>
-                <figcaption className="mt-6">
-                  <p className="font-mono text-[10px] text-accent uppercase tracking-widest">
-                    Project 042 · Renovation
-                  </p>
-                  <h4 className="text-2xl mt-2">Black Cedar & Glass — Titirangi</h4>
-                </figcaption>
-              </figure>
-            </Reveal>
-
-            <Reveal className="col-span-12 md:col-span-5 md:mt-32" delay={150}>
-                <figure className="group/project">
-                <div className="overflow-hidden">
-                  <img
-                    src={projectPonsonby}
-                    alt="Concrete kitchen island with brass tapware in Ponsonby villa"
-                    width={1000}
-                    height={1300}
-                    loading="lazy"
-                    className="aspect-[3/4] w-full object-cover group-hover/project:scale-[1.04] group-hover/project:rotate-[0.5deg] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
-                  />
-                </div>
-                <figcaption className="mt-6">
-                  <p className="font-mono text-[10px] text-accent uppercase tracking-widest">
-                    Project 039 · Heritage Restoration
-                  </p>
-                  <h4 className="text-2xl mt-2">Industrial Refinement — Ponsonby</h4>
-                </figcaption>
-              </figure>
-            </Reveal>
-
-            <Reveal className="col-span-12 md:col-span-6 md:col-start-4" delay={250}>
-                <figure className="group/project">
-                <div className="overflow-hidden">
-                  <img
-                    src={projectParnell}
-                    alt="Detail of seamless white oak joinery and plaster"
-                    width={1000}
-                    height={1300}
-                    loading="lazy"
-                    className="aspect-[5/4] w-full object-cover group-hover/project:scale-[1.04] group-hover/project:rotate-[0.5deg] transition-all duration-[1200ms] ease-[var(--ease-out-expo)]"
-                  />
-                </div>
-                <figcaption className="mt-6">
-                  <p className="font-mono text-[10px] text-accent uppercase tracking-widest">
-                    Project 047 · Interior Artistry
-                  </p>
-                  <h4 className="text-2xl mt-2">Oak & Plaster — Parnell</h4>
-                </figcaption>
-              </figure>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* TESTIMONIAL */}
-      <section className="py-24 md:py-32 px-6 md:px-10 border-b border-border">
-        <div className="max-w-4xl mx-auto text-center">
-          <Reveal>
-            <div className="h-px bg-border mb-16 animate-line-grow" style={{ animationDelay: '0.2s' }} />
-            <span className="font-mono text-[10px] uppercase text-accent tracking-widest">
-              Testimonial · 01
-            </span>
-            <blockquote className="mt-8 font-serif italic text-3xl md:text-5xl leading-tight text-balance">
-              “Six Harmony brought the precision of a master joiner to a complex
-              commercial renovation. Clear, calm, and quietly excellent.”
-            </blockquote>
-            <p className="mt-10 text-xs uppercase tracking-widest text-muted-foreground">
-              — Property Director, Hauraki Holdings
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* CONTACT */}
-      <section id="contact" className="py-32 md:py-40 px-6 md:px-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <Reveal>
-            <h2 className="text-5xl md:text-7xl font-medium tracking-tighter mb-4">
-              Start the <span className="font-serif italic text-accent">dialogue.</span>
-            </h2>
-            <p className="text-muted-foreground max-w-md mx-auto mt-6 mb-12">
-              Tell us about your project. We respond to every brief within two working days.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="mailto:hello@sixharmony.co.nz"
-                className="relative inline-block bg-foreground text-background px-10 py-5 text-xs uppercase tracking-[0.3em] font-medium overflow-hidden group/btn hover:bg-accent transition-colors"
-              >
-                <span className="relative z-10">Request a Quote</span>
-                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-background/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
-              </a>
-              <a
-                href="tel:+6493000600"
-                className="relative inline-block border border-foreground px-10 py-5 text-xs uppercase tracking-[0.3em] font-medium hover:bg-foreground hover:text-background transition-colors overflow-hidden group/btn2"
-              >
-                <span className="relative z-10">+64 9 300 0600</span>
-                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/10 to-transparent -translate-x-full group-hover/btn2:translate-x-full transition-transform duration-700" />
-              </a>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="border-t border-border py-10 px-6 md:px-10">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-            Six Harmony © {new Date().getFullYear()} — Based in Auckland · Serving Palmerston North, Whanganui, Rotorua, Timaru & Christchurch
-          </p>
-          <div className="flex gap-8">
-            <a href="#" className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest hover:text-foreground hover:scale-110 transition-all duration-300">
-              Instagram
-            </a>
-            <a href="#" className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest hover:text-foreground hover:scale-110 transition-all duration-300">
-              LinkedIn
-            </a>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
+    <EnquiryForm />
+    <footer className="border-t border-border px-6 py-10 md:px-10"><div className="mx-auto flex max-w-6xl flex-col justify-between gap-5 text-[10px] uppercase tracking-wider text-muted-foreground md:flex-row"><p>Six Harmony © {new Date().getFullYear()} · Based in Auckland</p><p>Serving Auckland · Palmerston North · Whanganui · Rotorua · Timaru · Christchurch</p></div></footer>
+  </div>;
 }
