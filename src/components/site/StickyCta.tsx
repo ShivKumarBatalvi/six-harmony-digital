@@ -9,18 +9,18 @@ export function StickyCta() {
     <div className="fixed bottom-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-t border-border">
       <div className="max-w-6xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between gap-4">
         <a
-          href="mailto:hello@sixharmony.co.nz"
-          className="shrink-0 inline-flex items-center bg-foreground text-background px-6 py-3 text-[10px] uppercase tracking-[0.3em] font-medium hover:bg-accent transition-colors"
+          href="#enquire"
+          className="shrink-0 inline-flex items-center bg-foreground text-background px-4 md:px-6 py-3 text-[9px] md:text-[10px] uppercase tracking-[0.14em] md:tracking-[0.25em] font-medium hover:bg-accent transition-colors"
         >
-          Request a Quote
+          Free Site Assessment
         </a>
 
         <div className="flex items-center gap-3 md:gap-5">
           <a
-            href="tel:+6493000600"
-            className="text-sm md:text-base font-medium tracking-tight hover:text-accent transition-colors whitespace-nowrap"
+            href="mailto:admin@sixharmony.co.nz"
+            className="hidden sm:block text-sm font-medium hover:text-accent transition-colors whitespace-nowrap"
           >
-            +64 9 300 0600
+            admin@sixharmony.co.nz
           </a>
           <button
             onClick={() => setIsVisible(false)}
