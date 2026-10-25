@@ -9,11 +9,29 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as OurWorkRouteImport } from './routes/our-work'
+import { Route as HealthSafetyRouteImport } from './routes/health-safety'
 import { Route as FacilitiesManagementRouteImport } from './routes/facilities-management'
 import { Route as CommercialPropertyMaintenanceRouteImport } from './routes/commercial-property-maintenance'
 import { Route as CommercialCleaningRouteImport } from './routes/commercial-cleaning'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurWorkRoute = OurWorkRouteImport.update({
+  id: '/our-work',
+  path: '/our-work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HealthSafetyRoute = HealthSafetyRouteImport.update({
+  id: '/health-safety',
+  path: '/health-safety',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FacilitiesManagementRoute = FacilitiesManagementRouteImport.update({
   id: '/facilities-management',
   path: '/facilities-management',
@@ -41,12 +59,18 @@ export interface FileRoutesByFullPath {
   '/commercial-cleaning': typeof CommercialCleaningRoute
   '/commercial-property-maintenance': typeof CommercialPropertyMaintenanceRoute
   '/facilities-management': typeof FacilitiesManagementRoute
+  '/health-safety': typeof HealthSafetyRoute
+  '/our-work': typeof OurWorkRoute
+  '/services': typeof ServicesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/commercial-cleaning': typeof CommercialCleaningRoute
   '/commercial-property-maintenance': typeof CommercialPropertyMaintenanceRoute
   '/facilities-management': typeof FacilitiesManagementRoute
+  '/health-safety': typeof HealthSafetyRoute
+  '/our-work': typeof OurWorkRoute
+  '/services': typeof ServicesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -54,6 +78,9 @@ export interface FileRoutesById {
   '/commercial-cleaning': typeof CommercialCleaningRoute
   '/commercial-property-maintenance': typeof CommercialPropertyMaintenanceRoute
   '/facilities-management': typeof FacilitiesManagementRoute
+  '/health-safety': typeof HealthSafetyRoute
+  '/our-work': typeof OurWorkRoute
+  '/services': typeof ServicesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -62,18 +89,27 @@ export interface FileRouteTypes {
     | '/commercial-cleaning'
     | '/commercial-property-maintenance'
     | '/facilities-management'
+    | '/health-safety'
+    | '/our-work'
+    | '/services'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/commercial-cleaning'
     | '/commercial-property-maintenance'
     | '/facilities-management'
+    | '/health-safety'
+    | '/our-work'
+    | '/services'
   id:
     | '__root__'
     | '/'
     | '/commercial-cleaning'
     | '/commercial-property-maintenance'
     | '/facilities-management'
+    | '/health-safety'
+    | '/our-work'
+    | '/services'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -81,10 +117,34 @@ export interface RootRouteChildren {
   CommercialCleaningRoute: typeof CommercialCleaningRoute
   CommercialPropertyMaintenanceRoute: typeof CommercialPropertyMaintenanceRoute
   FacilitiesManagementRoute: typeof FacilitiesManagementRoute
+  HealthSafetyRoute: typeof HealthSafetyRoute
+  OurWorkRoute: typeof OurWorkRoute
+  ServicesRoute: typeof ServicesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-work': {
+      id: '/our-work'
+      path: '/our-work'
+      fullPath: '/our-work'
+      preLoaderRoute: typeof OurWorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/health-safety': {
+      id: '/health-safety'
+      path: '/health-safety'
+      fullPath: '/health-safety'
+      preLoaderRoute: typeof HealthSafetyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/facilities-management': {
       id: '/facilities-management'
       path: '/facilities-management'
@@ -121,6 +181,9 @@ const rootRouteChildren: RootRouteChildren = {
   CommercialCleaningRoute: CommercialCleaningRoute,
   CommercialPropertyMaintenanceRoute: CommercialPropertyMaintenanceRoute,
   FacilitiesManagementRoute: FacilitiesManagementRoute,
+  HealthSafetyRoute: HealthSafetyRoute,
+  OurWorkRoute: OurWorkRoute,
+  ServicesRoute: ServicesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
