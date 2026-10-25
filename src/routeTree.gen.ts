@@ -9,32 +9,22 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ServicesRouteImport } from './routes/services'
-import { Route as OurWorkRouteImport } from './routes/our-work'
-import { Route as HealthSafetyRouteImport } from './routes/health-safety'
-import { Route as FacilitiesManagementRouteImport } from './routes/facilities-management'
-import { Route as CommercialPropertyMaintenanceRouteImport } from './routes/commercial-property-maintenance'
-import { Route as CommercialCleaningRouteImport } from './routes/commercial-cleaning'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CommercialCleaningRouteImport } from './routes/commercial-cleaning'
+import { Route as CommercialPropertyMaintenanceRouteImport } from './routes/commercial-property-maintenance'
+import { Route as FacilitiesManagementRouteImport } from './routes/facilities-management'
+import { Route as HealthSafetyRouteImport } from './routes/health-safety'
+import { Route as OurWorkRouteImport } from './routes/our-work'
+import { Route as ServicesRouteImport } from './routes/services'
 
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const OurWorkRoute = OurWorkRouteImport.update({
-  id: '/our-work',
-  path: '/our-work',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HealthSafetyRoute = HealthSafetyRouteImport.update({
-  id: '/health-safety',
-  path: '/health-safety',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FacilitiesManagementRoute = FacilitiesManagementRouteImport.update({
-  id: '/facilities-management',
-  path: '/facilities-management',
+const CommercialCleaningRoute = CommercialCleaningRouteImport.update({
+  id: '/commercial-cleaning',
+  path: '/commercial-cleaning',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CommercialPropertyMaintenanceRoute =
@@ -43,14 +33,24 @@ const CommercialPropertyMaintenanceRoute =
     path: '/commercial-property-maintenance',
     getParentRoute: () => rootRouteImport,
   } as any)
-const CommercialCleaningRoute = CommercialCleaningRouteImport.update({
-  id: '/commercial-cleaning',
-  path: '/commercial-cleaning',
+const FacilitiesManagementRoute = FacilitiesManagementRouteImport.update({
+  id: '/facilities-management',
+  path: '/facilities-management',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const HealthSafetyRoute = HealthSafetyRouteImport.update({
+  id: '/health-safety',
+  path: '/health-safety',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurWorkRoute = OurWorkRouteImport.update({
+  id: '/our-work',
+  path: '/our-work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -124,39 +124,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/our-work': {
-      id: '/our-work'
-      path: '/our-work'
-      fullPath: '/our-work'
-      preLoaderRoute: typeof OurWorkRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/health-safety': {
-      id: '/health-safety'
-      path: '/health-safety'
-      fullPath: '/health-safety'
-      preLoaderRoute: typeof HealthSafetyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/facilities-management': {
-      id: '/facilities-management'
-      path: '/facilities-management'
-      fullPath: '/facilities-management'
-      preLoaderRoute: typeof FacilitiesManagementRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/commercial-property-maintenance': {
-      id: '/commercial-property-maintenance'
-      path: '/commercial-property-maintenance'
-      fullPath: '/commercial-property-maintenance'
-      preLoaderRoute: typeof CommercialPropertyMaintenanceRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/commercial-cleaning': {
@@ -166,11 +138,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CommercialCleaningRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/commercial-property-maintenance': {
+      id: '/commercial-property-maintenance'
+      path: '/commercial-property-maintenance'
+      fullPath: '/commercial-property-maintenance'
+      preLoaderRoute: typeof CommercialPropertyMaintenanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/facilities-management': {
+      id: '/facilities-management'
+      path: '/facilities-management'
+      fullPath: '/facilities-management'
+      preLoaderRoute: typeof FacilitiesManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/health-safety': {
+      id: '/health-safety'
+      path: '/health-safety'
+      fullPath: '/health-safety'
+      preLoaderRoute: typeof HealthSafetyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-work': {
+      id: '/our-work'
+      path: '/our-work'
+      fullPath: '/our-work'
+      preLoaderRoute: typeof OurWorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
