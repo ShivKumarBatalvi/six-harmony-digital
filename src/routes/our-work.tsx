@@ -11,15 +11,16 @@ import propertyMaintenance from "@/assets/property-maintenance.jpg";
 
 const url = "https://sixharmony.co.nz/our-work";
 export const Route = createFileRoute("/our-work")({
-  head: () => ({ meta: [{ title: "Our Work & Client Reviews | Six Harmony" }, { name: "description", content: "Sites we manage, completed cleaning and maintenance work, before-and-after photos and reviews from Six Harmony clients." }, { property: "og:title", content: "Our Work & Reviews | Six Harmony" }, { property: "og:description", content: "See the sites we clean and maintain, and what our clients say." }, { property: "og:type", content: "website" }, { property: "og:url", content: url }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: url }] }),
+  staticData: { sitemap: true },
+  head: () => ({ meta: [{ title: "Our Work & Client Reviews | Six Harmony" }, { name: "description", content: "Explore Six Harmony cleaning and maintenance services, share your experience and request approved site examples for your property." }, { property: "og:title", content: "Our Work & Reviews | Six Harmony" }, { property: "og:description", content: "Request approved cleaning and maintenance examples and share your experience with Six Harmony." }, { property: "og:type", content: "website" }, { property: "og:url", content: url }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: url }] }),
   component: OurWork,
 });
 
 // Sample gallery — replace with approved site photos and details.
 const sites = [
-  { img: commercialCleaning, title: "Commercial office", tag: "Ongoing cleaning contract" },
-  { img: facilitiesManagement, title: "Commercial property", tag: "Facilities management" },
-  { img: propertyMaintenance, title: "Residential property", tag: "Property maintenance" },
+  { img: commercialCleaning, title: "Commercial office", tag: "Illustrative service image" },
+  { img: facilitiesManagement, title: "Commercial property", tag: "Illustrative service image" },
+  { img: propertyMaintenance, title: "Property maintenance inspection", tag: "Illustrative service image" },
 ];
 
 type Review = { id: string; name: string; location: string | null; rating: number; body: string };
@@ -47,8 +48,8 @@ function OurWork() {
     f.reset(); setRating(5); setMsg("Thank you! Your review will appear once it has been approved.");
   }
 
-  return <PageShell eyebrow="Our work · Sites we manage" title={<>Quality you<br /><span className="font-serif italic text-accent">can see.</span></>} intro="Residential and commercial properties we clean and maintain, ongoing contracts, before-and-after results and reviews from our clients.">
-    <section className="px-6 py-20 md:px-10"><div className="mx-auto max-w-6xl"><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">Sites we manage</p><div className="mt-10 grid gap-6 md:grid-cols-3">{sites.map((s) => <figure key={s.title} className="group overflow-hidden border border-border"><img src={s.img} alt={s.title} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105" /><figcaption className="p-5"><p className="font-mono text-[10px] uppercase tracking-wider text-accent">{s.tag}</p><p className="mt-2 text-xl">{s.title}</p></figcaption></figure>)}</div><p className="mt-6 text-sm text-muted-foreground">Approved site photos and contract examples coming soon.</p></div></section>
+  return <PageShell heading="Our Commercial Cleaning & Maintenance Work" eyebrow="Our work · Sites we manage" title={<>Quality you<br /><span className="font-serif italic text-accent">can see.</span></>} intro="Residential and commercial properties we clean and maintain, ongoing contracts, before-and-after results and reviews from our clients.">
+    <section className="px-6 py-20 md:px-10"><div className="mx-auto max-w-6xl"><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">Sites we manage</p><div className="mt-10 grid gap-6 md:grid-cols-3">{sites.map((s) => <figure key={s.title} className="group overflow-hidden border border-border"><img src={s.img} alt={`${s.title} — illustrative service image, not a verified client site`} width={1600} height={1008} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105" /><figcaption className="p-5"><p className="font-mono text-[10px] uppercase tracking-wider text-accent">{s.tag}</p><p className="mt-2 text-xl">{s.title}</p></figcaption></figure>)}</div><p className="mt-6 text-sm text-muted-foreground">Approved site photos and contract examples coming soon.</p></div></section>
 
     <section className="border-y border-border bg-card/60 px-6 py-20 md:px-10"><div className="mx-auto max-w-6xl"><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">Before & after</p><div className="mt-10 grid gap-6 md:grid-cols-2">{["Before", "After"].map((l) => <div key={l} className="flex aspect-[4/3] items-center justify-center border border-dashed border-border bg-background text-muted-foreground">{l} photo — coming soon</div>)}</div></div></section>
 
