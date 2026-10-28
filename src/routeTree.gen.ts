@@ -15,7 +15,9 @@ import { Route as CommercialPropertyMaintenanceRouteImport } from './routes/comm
 import { Route as FacilitiesManagementRouteImport } from './routes/facilities-management'
 import { Route as HealthSafetyRouteImport } from './routes/health-safety'
 import { Route as OurWorkRouteImport } from './routes/our-work'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -48,9 +50,19 @@ const OurWorkRoute = OurWorkRouteImport.update({
   path: '/our-work',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -61,7 +73,9 @@ export interface FileRoutesByFullPath {
   '/facilities-management': typeof FacilitiesManagementRoute
   '/health-safety': typeof HealthSafetyRoute
   '/our-work': typeof OurWorkRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,7 +84,9 @@ export interface FileRoutesByTo {
   '/facilities-management': typeof FacilitiesManagementRoute
   '/health-safety': typeof HealthSafetyRoute
   '/our-work': typeof OurWorkRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,7 +96,9 @@ export interface FileRoutesById {
   '/facilities-management': typeof FacilitiesManagementRoute
   '/health-safety': typeof HealthSafetyRoute
   '/our-work': typeof OurWorkRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,7 +109,9 @@ export interface FileRouteTypes {
     | '/facilities-management'
     | '/health-safety'
     | '/our-work'
+    | '/robots.txt'
     | '/services'
+    | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,7 +120,9 @@ export interface FileRouteTypes {
     | '/facilities-management'
     | '/health-safety'
     | '/our-work'
+    | '/robots.txt'
     | '/services'
+    | '/sitemap.xml'
   id:
     | '__root__'
     | '/'
@@ -109,7 +131,9 @@ export interface FileRouteTypes {
     | '/facilities-management'
     | '/health-safety'
     | '/our-work'
+    | '/robots.txt'
     | '/services'
+    | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,7 +143,9 @@ export interface RootRouteChildren {
   FacilitiesManagementRoute: typeof FacilitiesManagementRoute
   HealthSafetyRoute: typeof HealthSafetyRoute
   OurWorkRoute: typeof OurWorkRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
   ServicesRoute: typeof ServicesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -166,11 +192,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OurWorkRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -183,7 +223,9 @@ const rootRouteChildren: RootRouteChildren = {
   FacilitiesManagementRoute: FacilitiesManagementRoute,
   HealthSafetyRoute: HealthSafetyRoute,
   OurWorkRoute: OurWorkRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
   ServicesRoute: ServicesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
