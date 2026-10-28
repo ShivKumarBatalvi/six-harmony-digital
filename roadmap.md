@@ -1,11 +1,11 @@
 # Roadmap
 
 ## SEO improvements, part 1
-- [ ] Add automatic public sitemap and permissive robots server routes for sixharmony.co.nz
-- [ ] Add keyword H1s without changing the styled slogans
-- [ ] Expand all three service pages and add five FAQs each with matching structured data
-- [ ] Add business and service structured data, descriptive images and shared footer links
-- [ ] Verify unique metadata, canonical URLs, sitemap, headings and visible content
+- [x] Add automatic public sitemap and permissive robots server routes for sixharmony.co.nz
+- [x] Add keyword H1s without changing the styled slogans
+- [x] Expand all three service pages and add five FAQs each with matching structured data
+- [x] Add business and service structured data, descriptive images and shared footer links
+- [x] Verify unique metadata, canonical URLs, sitemap, headings and visible content
 
 - [ ] Reposition home page around commercial cleaning and facilities management
 - [ ] Add one nationwide page each for commercial cleaning, facilities management, and commercial property maintenance
