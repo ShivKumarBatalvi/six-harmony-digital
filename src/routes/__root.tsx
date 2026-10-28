@@ -8,6 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 
+import { businessSchema } from "@/lib/seo";
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
@@ -68,6 +69,7 @@ function ErrorComponent({ error, reset }: import("@tanstack/react-router").Error
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -76,6 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "Six Harmony" },
       { property: "og:type", content: "website" },
     ],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(businessSchema) }],
     links: [
       {
         rel: "stylesheet",

@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
+import { serviceAreas } from "@/lib/seo";
 import { Reveal } from "@/components/site/Reveal";
 
 const url = "https://sixharmony.co.nz/services";
 export const Route = createFileRoute("/services")({
+  staticData: { sitemap: true },
   head: () => ({ meta: [{ title: "Cleaning & Maintenance Services NZ | Six Harmony" }, { name: "description", content: "Office, commercial, residential, end-of-tenancy, deep cleaning and property maintenance across NZ. Competitive pricing, flexible schedules, custom packages." }, { property: "og:title", content: "Cleaning & Maintenance Services | Six Harmony" }, { property: "og:description", content: "Commercial and residential cleaning plus property maintenance, tailored to every client." }, { property: "og:type", content: "website" }, { property: "og:url", content: url }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: url }] }),
   component: Services,
 });
@@ -28,8 +30,9 @@ const services = [
 ];
 
 function Services() {
-  return <PageShell eyebrow="Our cleaning services" title={<>Every space,<br /><span className="font-serif italic text-accent">properly cared for.</span></>} intro="From daily office cleaning to end-of-tenancy and property maintenance — residential and commercial services across New Zealand.">
+  return <PageShell heading="Commercial Cleaning & Property Maintenance Services in NZ" eyebrow="Our cleaning services" title={<>Every space,<br /><span className="font-serif italic text-accent">properly cared for.</span></>} intro="From daily office cleaning to end-of-tenancy and property maintenance — residential and commercial services across New Zealand.">
     <section className="border-y border-border bg-card/60 px-6 py-10 md:px-10"><div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">{[["Competitive pricing", "Clear, fair quotes with no hidden extras."], ["Flexible schedules", "Daily, weekly, fortnightly, monthly or one-off."], ["Customised packages", "Built around each client's requirements."]].map(([t, b]) => <div key={t}><p className="text-2xl text-accent">{t}</p><p className="mt-2 text-muted-foreground">{b}</p></div>)}</div></section>
+    <section id="locations" className="border-y border-border px-6 py-10 md:px-10"><div className="mx-auto max-w-6xl"><h2 className="text-2xl">Locations served</h2><p className="mt-4 leading-relaxed text-muted-foreground">{serviceAreas.join(" · ")}</p></div></section>
     <section className="px-6 py-24 md:px-10"><div className="mx-auto grid max-w-6xl border-l border-t border-border md:grid-cols-2 lg:grid-cols-3">{services.map(([t, b], i) => <Reveal key={t} delay={(i % 3) * 60}><article className="h-full border-b border-r border-border p-8 transition-colors hover:bg-card"><span className="font-mono text-[10px] text-accent">{String(i + 1).padStart(2, "0")}</span><h2 className="mt-8 text-xl">{t}</h2><p className="mt-3 leading-relaxed text-muted-foreground">{b}</p></article></Reveal>)}</div></section>
   </PageShell>;
 }

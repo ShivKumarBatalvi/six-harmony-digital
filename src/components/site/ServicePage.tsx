@@ -4,9 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Nav } from "@/components/site/Nav";
 import { StickyCta } from "@/components/site/StickyCta";
 import { Reveal } from "@/components/site/Reveal";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { serviceLinks } from "@/lib/seo";
+import type { ServiceContent } from "@/lib/service-content";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 
 export type ServicePageProps = {
+  content: ServiceContent;
   eyebrow: string;
   title: string;
   intro: string;
@@ -18,7 +22,7 @@ export type ServicePageProps = {
 
 const sectors = ["Offices", "Retail", "Property management", "Body corporates", "Industrial & warehouses", "Education", "Healthcare", "Hospitality", "Construction"];
 
-export function ServicePage({ eyebrow, title, intro, image, imageAlt, services, process }: ServicePageProps) {
+export function ServicePage({ content, eyebrow, title, intro, image, imageAlt, services, process }: ServicePageProps) {
   return <div className="min-h-screen bg-background pb-20 text-foreground">
     <Nav />
     <StickyCta />
@@ -26,8 +30,8 @@ export function ServicePage({ eyebrow, title, intro, image, imageAlt, services, 
       <img src={image} alt={imageAlt} width={1600} height={1008} className="absolute inset-0 -z-20 h-full w-full object-cover" />
       <div className="absolute inset-0 -z-10 bg-background/70" />
       <div className="mx-auto flex min-h-[540px] max-w-6xl flex-col justify-end">
-        <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">{eyebrow}</p>
-        <h1 className="mt-6 max-w-5xl text-[clamp(3rem,9vw,7rem)] font-medium leading-[0.88]">{title}</h1>
+        <h1 className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent" title={eyebrow}>{content.heading}</h1>
+        <h2 className="mt-6 max-w-5xl text-[clamp(3rem,9vw,7rem)] font-medium leading-[0.88]">{title}</h2>
         <div className="mt-10 flex flex-col gap-8 md:flex-row md:items-end md:justify-between"><p className="max-w-2xl text-lg leading-relaxed md:text-xl">{intro}</p><Button asChild size="lg" className="h-auto shrink-0 rounded-none px-7 py-4 text-xs uppercase tracking-[0.18em]"><a href="#enquire">Get a free quote <ArrowRight /></a></Button></div>
       </div>
     </header>
@@ -41,8 +45,11 @@ export function ServicePage({ eyebrow, title, intro, image, imageAlt, services, 
 
       <section className="border-y border-border px-6 py-24 md:px-10"><div className="mx-auto max-w-6xl"><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">Procurement support</p><div className="mt-6 grid gap-10 md:grid-cols-3"><div><h2 className="text-2xl">Credibility documents</h2><p className="mt-4 leading-relaxed text-muted-foreground">Tell us which NZBN, insurance, health and safety, workforce, or environmental records your process requires.</p></div><div><h2 className="text-2xl">Case studies</h2><p className="mt-4 leading-relaxed text-muted-foreground">Discuss the project evidence and service examples relevant to your property portfolio or tender.</p></div><div><h2 className="text-2xl">References</h2><p className="mt-4 leading-relaxed text-muted-foreground">Include your reference and testimonial requirements in the procurement enquiry.</p></div></div><Button asChild variant="outline" size="lg" className="mt-10 h-auto rounded-none px-7 py-4 text-xs uppercase tracking-[0.18em]"><a href="mailto:sales@sixharmony.co.nz?subject=Tender%20%2F%20Procurement%20Enquiry">Tender / procurement enquiry <ArrowRight /></a></Button></div></section>
 
+      <section className="px-6 py-24 md:px-10"><div className="mx-auto max-w-6xl space-y-12">{content.sections.map(section => <div key={section.title} className="max-w-3xl"><h2 className="text-3xl">{section.title}</h2><p className="mt-5 leading-relaxed text-muted-foreground">{section.body}</p></div>)}<p className="max-w-3xl leading-relaxed text-muted-foreground">For a combined scope, discuss {serviceLinks.filter(service => service.label !== "All cleaning & maintenance services").map((service, index) => <span key={service.to}>{index > 0 ? ", " : ""}<Link to={service.to} className="text-accent underline underline-offset-4">{service.label.toLowerCase()}</Link></span>)}. See our <Link to="/health-safety" className="text-accent underline underline-offset-4">Health &amp; Safety procedures</Link> for site-specific planning.</p></div></section>
+      <section className="border-y border-border px-6 py-24 md:px-10"><div className="mx-auto max-w-6xl"><h2 className="text-4xl">Frequently asked questions</h2><div className="mt-10 divide-y divide-border">{content.faqs.map(faq => <div key={faq.question} className="max-w-3xl py-7"><h3 className="text-xl">{faq.question}</h3><p className="mt-4 leading-relaxed text-muted-foreground">{faq.answer}</p></div>)}</div></div></section>
       <EnquiryForm />
-      <section className="px-6 py-14 md:px-10"><div className="mx-auto flex max-w-6xl flex-wrap gap-x-8 gap-y-3 text-xs uppercase tracking-wider text-muted-foreground"><Link to="/commercial-cleaning" className="hover:text-accent">Commercial cleaning</Link><Link to="/facilities-management" className="hover:text-accent">Facilities management</Link><Link to="/commercial-property-maintenance" className="hover:text-accent">Property maintenance</Link></div></section>
+
     </main>
+    <SiteFooter />
   </div>;
 }
