@@ -1,5 +1,9 @@
 # Roadmap
 
+## Our Work gallery follow-ups
+- [x] Proxy Lovable asset paths for externally hosted image delivery and verify GET/HEAD and error responses
+- [x] Add photos 05 and 09 in numbered positions and verify the gallery and lightbox without other page changes
+
 ## SEO improvements, part 1
 - [x] Add automatic public sitemap and permissive robots server routes for sixharmony.co.nz
 - [x] Add keyword H1s without changing the styled slogans

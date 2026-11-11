@@ -40,6 +40,24 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const url = new URL(request.url);
+      if ((request.method === "GET" || request.method === "HEAD") && url.pathname.startsWith("/__l5e/assets-v1/")) {
+        const upstreamUrl = new URL("https://six-harmony-bloom.lovable.app");
+        upstreamUrl.pathname = url.pathname;
+        upstreamUrl.search = url.search;
+        const options: RequestInit & { cf: { cacheEverything: boolean; cacheTtl: number } } = {
+          method: request.method,
+          cf: { cacheEverything: true, cacheTtl: 31536000 },
+        };
+        const upstream = await fetch(upstreamUrl, options);
+        const headers = new Headers(upstream.headers);
+        headers.set("Cache-Control", "public, max-age=31536000, immutable");
+        return new Response(request.method === "HEAD" ? null : upstream.body, {
+          status: upstream.status,
+          statusText: upstream.statusText,
+          headers,
+        });
+      }
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);

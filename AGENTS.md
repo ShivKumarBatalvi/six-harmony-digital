@@ -4,3 +4,4 @@
 - Every route explicitly declares staticData.sitemap; the server sitemap derives public paths from the router and excludes endpoints and non-public routes.
 - Use SiteFooter on content pages so service and location navigation stays consistent.
 - Keyword H1s occupy the existing small header-label position; the original slogans retain their visual styling as H2s to preserve the design.
+- The server entry proxies GET/HEAD /__l5e/assets-v1/ paths to the fixed Six Harmony Lovable asset origin with one-year edge caching so current and future CDN assets work on external hosting.

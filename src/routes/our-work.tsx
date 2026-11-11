@@ -10,9 +10,11 @@ import img01 from "@/assets/wellesley-road-napier-01-corridor-window.webp.asset.
 import img02 from "@/assets/wellesley-road-napier-02-corridor-doors.webp.asset.json";
 import img03 from "@/assets/wellesley-road-napier-03-courtyard-garden.webp.asset.json";
 import img04 from "@/assets/wellesley-road-napier-04-entry-lobby-stairs.webp.asset.json";
+import img05 from "@/assets/wellesley-road-napier-05-bike-store-sweep.webp.asset.json";
 import img06 from "@/assets/wellesley-road-napier-06-entrance-matting.webp.asset.json";
 import img07 from "@/assets/wellesley-road-napier-07-corridor-end.webp.asset.json";
 import img08 from "@/assets/wellesley-road-napier-08-exterior-pathway.webp.asset.json";
+import img09 from "@/assets/wellesley-road-napier-09-stair-landing.webp.asset.json";
 import img10 from "@/assets/wellesley-road-napier-10-stairwell.webp.asset.json";
 import img11 from "@/assets/wellesley-road-napier-11-street-frontage.webp.asset.json";
 import img12 from "@/assets/wellesley-road-napier-12-stair-treads.webp.asset.json";
@@ -27,15 +29,17 @@ export const Route = createFileRoute("/our-work")({
 type SitePhoto = { src: string; caption: string; width: number; height: number };
 const photo = (asset: { url: string }, caption: string, width = 1200, height = 1600): SitePhoto => ({ src: asset.url, caption, width, height });
 
-// 124 Wellesley Road, Napier South — real site photos. 05 and 09 to be added when supplied.
+// 124 Wellesley Road, Napier South — real site photos in numbered order.
 const sitePhotos: SitePhoto[] = [
   photo(img01, "Upper-level corridor"),
   photo(img02, "Corridor and service cupboards"),
   photo(img03, "Communal courtyard and planter beds"),
   photo(img04, "Entry lobby and stairs"),
+  photo(img05, "Detail cleaning in the bike store", 900, 1200),
   photo(img06, "Entrance matting", 900, 1200),
   photo(img07, "Corridor, upper floor"),
   photo(img08, "Exterior pathway and planting"),
+  photo(img09, "Stair landing", 1200, 1600),
   photo(img10, "Main stairwell"),
   photo(img11, "Street frontage"),
   photo(img12, "Stair treads and nosings"),
