@@ -5,23 +5,42 @@ import { Star } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
-import commercialCleaning from "@/assets/commercial-cleaning.jpg";
-import facilitiesManagement from "@/assets/facilities-management.jpg";
-import propertyMaintenance from "@/assets/property-maintenance.jpg";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
+import img01 from "@/assets/wellesley-road-napier-01-corridor-window.webp.asset.json";
+import img02 from "@/assets/wellesley-road-napier-02-corridor-doors.webp.asset.json";
+import img03 from "@/assets/wellesley-road-napier-03-courtyard-garden.webp.asset.json";
+import img04 from "@/assets/wellesley-road-napier-04-entry-lobby-stairs.webp.asset.json";
+import img06 from "@/assets/wellesley-road-napier-06-entrance-matting.webp.asset.json";
+import img07 from "@/assets/wellesley-road-napier-07-corridor-end.webp.asset.json";
+import img08 from "@/assets/wellesley-road-napier-08-exterior-pathway.webp.asset.json";
+import img10 from "@/assets/wellesley-road-napier-10-stairwell.webp.asset.json";
+import img11 from "@/assets/wellesley-road-napier-11-street-frontage.webp.asset.json";
+import img12 from "@/assets/wellesley-road-napier-12-stair-treads.webp.asset.json";
 
 const url = "https://sixharmony.co.nz/our-work";
 export const Route = createFileRoute("/our-work")({
   staticData: { sitemap: true },
-  head: () => ({ meta: [{ title: "Our Work & Client Reviews | Six Harmony" }, { name: "description", content: "Explore Six Harmony cleaning and maintenance services, share your experience and request approved site examples for your property." }, { property: "og:title", content: "Our Work & Reviews | Six Harmony" }, { property: "og:description", content: "Request approved cleaning and maintenance examples and share your experience with Six Harmony." }, { property: "og:type", content: "website" }, { property: "og:url", content: url }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: url }] }),
+  head: () => ({ meta: [{ title: "Our Work & Client Reviews | Six Harmony" }, { name: "description", content: "Real Six Harmony site work, including cleaning and site care at 124 Wellesley Road, Napier South. Share your experience or request a free quote." }, { property: "og:title", content: "Our Work & Reviews | Six Harmony" }, { property: "og:description", content: "Real Six Harmony site work at 124 Wellesley Road, Napier South, plus client reviews." }, { property: "og:type", content: "website" }, { property: "og:url", content: url }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: url }] }),
   component: OurWork,
 });
 
-// Sample gallery — replace with approved site photos and details.
-const sites = [
-  { img: commercialCleaning, title: "Commercial office", tag: "Illustrative service image" },
-  { img: facilitiesManagement, title: "Commercial property", tag: "Illustrative service image" },
-  { img: propertyMaintenance, title: "Property maintenance inspection", tag: "Illustrative service image" },
+type SitePhoto = { src: string; caption: string; width: number; height: number };
+const photo = (asset: { url: string }, caption: string, width = 1200, height = 1600): SitePhoto => ({ src: asset.url, caption, width, height });
+
+// 124 Wellesley Road, Napier South — real site photos. 05 and 09 to be added when supplied.
+const sitePhotos: SitePhoto[] = [
+  photo(img01, "Upper-level corridor"),
+  photo(img02, "Corridor and service cupboards"),
+  photo(img03, "Communal courtyard and planter beds"),
+  photo(img04, "Entry lobby and stairs"),
+  photo(img06, "Entrance matting", 900, 1200),
+  photo(img07, "Corridor, upper floor"),
+  photo(img08, "Exterior pathway and planting"),
+  photo(img10, "Main stairwell"),
+  photo(img11, "Street frontage"),
+  photo(img12, "Stair treads and nosings"),
 ];
+const altOf = (caption: string) => `${caption} at 124 Wellesley Road, Napier South`;
 
 type Review = { id: string; name: string; location: string | null; rating: number; body: string };
 const reviewSchema = z.object({
@@ -36,6 +55,7 @@ function OurWork() {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [rating, setRating] = useState(5);
   const [msg, setMsg] = useState<string | null>(null);
+  const [lightbox, setLightbox] = useState<SitePhoto | null>(null);
   useEffect(() => { supabase.from("reviews").select("id,name,location,rating,body").order("created_at", { ascending: false }).then(({ data }) => setReviews(data ?? [])); }, []);
 
   async function submit(e: FormEvent<HTMLFormElement>) {
@@ -49,7 +69,16 @@ function OurWork() {
   }
 
   return <PageShell heading="Our Commercial Cleaning & Maintenance Work" eyebrow="Our work · Sites we manage" title={<>Quality you<br /><span className="font-serif italic text-accent">can see.</span></>} intro="Residential and commercial properties we clean and maintain, ongoing contracts, before-and-after results and reviews from our clients.">
-    <section className="px-6 py-20 md:px-10"><div className="mx-auto max-w-6xl"><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">Sites we manage</p><div className="mt-10 grid gap-6 md:grid-cols-3">{sites.map((s) => <figure key={s.title} className="group overflow-hidden border border-border"><img src={s.img} alt={`${s.title} — illustrative service image, not a verified client site`} width={1600} height={1008} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105" /><figcaption className="p-5"><p className="font-mono text-[10px] uppercase tracking-wider text-accent">{s.tag}</p><p className="mt-2 text-xl">{s.title}</p></figcaption></figure>)}</div><p className="mt-6 text-sm text-muted-foreground">Approved site photos and contract examples coming soon.</p></div></section>
+    <section className="px-6 py-20 md:px-10"><div className="mx-auto max-w-6xl"><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">Featured site</p><h2 className="mt-5 text-4xl">124 Wellesley Road, Napier South</h2><p className="mt-4 max-w-2xl text-muted-foreground">Cleaning and site care for a multi-level apartment building, covering corridors, stairwells, entrances, the courtyard and exterior areas.</p><div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{sitePhotos.map((p) => <figure key={p.src} className="group overflow-hidden border border-border"><button type="button" onClick={() => setLightbox(p)} className="block w-full cursor-zoom-in overflow-hidden" aria-label={`View larger: ${altOf(p.caption)}`}><img src={p.src} alt={altOf(p.caption)} width={p.width} height={p.height} loading="lazy" className="aspect-[3/4] w-full object-cover transition-transform duration-700 group-hover:scale-105" /></button><figcaption className="p-5"><p className="text-sm">{p.caption}</p></figcaption></figure>)}</div></div></section>
+
+    <Dialog open={lightbox !== null} onOpenChange={(open) => { if (!open) setLightbox(null); }}>
+      <DialogContent className="max-w-3xl border-border bg-background p-3 sm:rounded-none">
+        <DialogTitle className="sr-only">{lightbox ? altOf(lightbox.caption) : "Site photo"}</DialogTitle>
+        <DialogDescription className="sr-only">Enlarged site photo</DialogDescription>
+        {lightbox && <img src={lightbox.src} alt={altOf(lightbox.caption)} width={lightbox.width} height={lightbox.height} className="max-h-[80vh] w-full object-contain" />}
+        {lightbox && <p className="px-1 pb-1 text-sm text-muted-foreground">{lightbox.caption} — 124 Wellesley Road, Napier South</p>}
+      </DialogContent>
+    </Dialog>
 
     <section className="border-y border-border bg-card/60 px-6 py-20 md:px-10"><div className="mx-auto max-w-6xl"><p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">Before & after</p><div className="mt-10 grid gap-6 md:grid-cols-2">{["Before", "After"].map((l) => <div key={l} className="flex aspect-[4/3] items-center justify-center border border-dashed border-border bg-background text-muted-foreground">{l} photo — coming soon</div>)}</div></div></section>
 
